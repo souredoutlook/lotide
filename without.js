@@ -11,7 +11,7 @@ const assertArraysEqual = function(actual, expected) {
 
 const eqArrays = function(array1, array2) {
   if (array1.length === array2.length) {
-    for (let i = 0; i < array1.length; i++){
+    for (let i = 0; i < array1.length; i++) {
       if (array1[i] !== array2[i]) {
         return false;
       }
@@ -23,7 +23,7 @@ const eqArrays = function(array1, array2) {
 
 const without = function(source, itemsToRemove) {
   const newArray = [];
-  //This function should take in a source array and a itemsToRemove array. 
+  //This function should take in a source array and a itemsToRemove array.
   //It should return a new array with only those elements from source that are not present in the itemsToRemove array.
   for (let i = 0; i < source.length; i++) {
     let pushSource = true;
@@ -32,7 +32,7 @@ const without = function(source, itemsToRemove) {
         pushSource = false;
       }
     }
-    if (pushSource){
+    if (pushSource) {
       newArray.push(source[i]);
     }
   }
@@ -40,5 +40,5 @@ const without = function(source, itemsToRemove) {
 };
 
 // TEST CODE
-assertArraysEqual(without([1, 2, 3], [1]), [2, 3]);
-assertArraysEqual(without(["1", "2", "3"], [1, 2, "3"]), ["1", "2"]);
+// assertArraysEqual(without([1, 2, 3], [1]), [2, 3]);
+// assertArraysEqual(without(["1", "2", "3"], [1, 2, "3"]), ["1", "2"]);
