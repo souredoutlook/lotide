@@ -25,4 +25,3 @@ assertEqual(true, true);
 assertEqual(true, false);
 assertEqual(1, "Foo");
 assertEqual("1", "Foo");
-assertEqual(NaN, NaN);

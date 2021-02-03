@@ -21,11 +21,21 @@ const eqArrays = function(array1, array2) {
   return false;
 };
 
-// TEST CODE
-
-// assertArraysEqual([1, 2, 3], [1, 2, 3]);
-// assertArraysEqual([1, 2, 3], [3, 2, 1]);
-// assertArraysEqual(["1", "2", "3"], ["1", "2", "3"]);
-// assertArraysEqual(["1", "2", "3"], ["1", "2", 3]);
-// assertArraysEqual([], ["1", "2", 3]);
-// assertArraysEqual([], []);
+const flatten = function(roundArray) {
+  const flattenedArray = [];
+  if (Array.isArray(roundArray)) {
+    for (let i = 0; i < roundArray.length; i++) {
+      if (Array.isArray(roundArray[i])) {
+        for (let j = 0; j < roundArray[i].length; j++) {
+          flattenedArray.push(roundArray[i][j]);
+        }
+      } else {
+        flattenedArray.push(roundArray[i]);
+      }
+    }
+    return flattenedArray;
+  } else {
+    console.log('No array given as argument.');
+    process.exit();
+  }
+};
