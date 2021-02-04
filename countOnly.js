@@ -17,20 +17,29 @@ const assertEqual = function(actual, expected) {
 
 // allItems: an array of strings that we need to look through
 // itemsToCount: an object specifying what to count
+// const countOnly = function(allItems, itemsToCount) {
+//   const countedItems = {};
+//   for (let countedItem of Object.keys(itemsToCount)) {
+//     if (itemsToCount[countedItem]) {
+//       for (let item of allItems) {
+//         if (item === countedItem) {
+//           countedItems[countedItem] !== undefined ? countedItems[countedItem] += 1 : countedItems[countedItem] = 1;
+//         }
+//       }
+//     }
+//   }
+//   return countedItems;
+// };
+
 const countOnly = function(allItems, itemsToCount) {
   const countedItems = {};
-  for (let countedItem of Object.keys(itemsToCount)) {
-    if (itemsToCount[countedItem]) {
-      for (let item of allItems) {
-        if (item === countedItem) {
-          countedItems[countedItem] !== undefined ? countedItems[countedItem] += 1 : countedItems[countedItem] = 1;
+    for (let item of allItems) {
+        if (itemsToCount[item]) {
+          countedItems[item] !== undefined ? countedItems[item] += 1 : countedItems[item] = 1;
         }
       }
-    }
-  }
   return countedItems;
 };
-
 
 // TEST CODE
 
