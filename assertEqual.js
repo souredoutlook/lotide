@@ -1,13 +1,34 @@
+//assertEqual.js
 const passEmoji = String.fromCodePoint(0x1F49A);
 const failEmoji = String.fromCodePoint(0x1F198);
 
+const checkType = function(value) {
+  let returnedValue = '';
+  if (typeof(value) === "string") {
+    returnedValue = `"${value}"`;
+    return returnedValue;
+  } else if (value instanceof Array) {
+    returnedValue = `[ `;
+    for (let i = 0; i < value.length - 1; i++) {
+      if (typeof(value[i]) === "string") {
+        returnedValue += `'${value[i]}', `;
+      } else {
+        returnedValue += `${value[i]}, `;
+      }
+    }
+    if (typeof(value[value.length - 1]) === "string") {
+      returnedValue += `'${value[value.length - 1]}' ]`;
+    } else {
+      returnedValue += `${value[value.length - 1]} ]`;
+    }
+    return returnedValue;
+  }
+  return value;
+};
+
 const assertEqual = function(actual, expected) {
-  if (typeof(actual) === "string") {
-    actual = `"${actual}"`;
-  }
-  if (typeof(expected) === "string") {
-    expected = `"${expected}"`;
-  }
+  actual = checkType(actual);
+  expected = checkType(expected);
   if (actual === expected) {
     console.log(`${passEmoji}${passEmoji}${passEmoji} Assertion Passed: ${actual} === ${expected}`);
   } else {
@@ -15,13 +36,7 @@ const assertEqual = function(actual, expected) {
   }
 };
 
-// TEST CODE
 
-assertEqual("Lighthouse Labs", "Bootcamp");
-assertEqual("Foo", "Foo");
-assertEqual(1, 1);
-assertEqual(1, 2);
-assertEqual(true, true);
-assertEqual(true, false);
-assertEqual(1, "Foo");
-assertEqual("1", "Foo");
+module.exports = assertEqual;
+
+
