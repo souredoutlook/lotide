@@ -1,18 +1,36 @@
+const { assert } = require('chai');
 const tail = require('../tail');
-const assertEqual = require('../assertEqual');
+
 
 // TEST CODE
 
-console.log(tail());
+describe("#tail", ()=> {
+  it("returns undefined for no arguments", ()=> {
+    assert.strictEqual(tail(), undefined);
+  });
 
-console.log(tail([]));
+  it("returns [] for []", ()=>{
+    let expectedResult = [];
+    assert.deepEqual(tail([]),expectedResult);
+  });
 
-const words = ['Yo Yo', "Lighthouse", "Labs"];
-console.log(tail(words));
-assertEqual(words.length, 3);
+  it("tail does not alter the length of the target array", () => {
+    const words = ['Yo Yo', "Lighthouse", "Labs"];
+    tail(words);
+    let expectedResult = 3;
+    assert.strictEqual((words.length),expectedResult);
+  });
 
-console.log(tail(["Hello", "Lighthouse", "Labs"]));
-assertEqual(tail(["Hello", "Lighthouse", "Labs"]), ["Lighthouse", "Labs"]);
+  it("returns ['Lighthouse', 'Labs'] for ['Hello', 'Lighthouse', 'Labs']", ()=>{
+    let target = ['Hello', 'Lighthouse', 'Labs'];
+    let expectedResult = ['Lighthouse', 'Labs'];
+    assert.deepEqual(tail(target),expectedResult);
+  });
 
-assertEqual(tail([1, 2, 3]), [2, 3]);
-assertEqual(tail([1, 2, 3]), [1, 2, 3]);
+  it("returns [2,3] for [1,2,3]", ()=>{
+    let target = [1,2,3];
+    let expectedResult = [2,3];
+    assert.deepEqual(tail(target),expectedResult);
+  });
+  
+});
