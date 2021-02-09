@@ -1,4 +1,4 @@
-const {assert,expect} = require('chai');
+const {expect} = require('chai');
 const letterPositions = require('../letterPositions');
 
 describe('#flatten', ()=>{
@@ -9,10 +9,3 @@ describe('#flatten', ()=>{
     expect(letterPositions("a  a")).to.deep.equal({a: [0,3]});
   });
 });
-
-
-// TEST CODE
-
-
-// let test = letterPositions("a");
-// assertArraysEqual(test['a'], [0]);

@@ -12,11 +12,11 @@ This project was created and published by me as part of my learnings at [Lightho
 
 **Install it:**
 
-`npm install @username/lotide`
+`npm install @souredoutlook/lotide`
 
 **Require it:**
 
-`const _ = require('@username/lotide');`
+`const _ = require('@souredoutlook/lotide');`
 
 **Call it:**
 
