@@ -1,6 +1,6 @@
 {
   "name": "@souredoutlook/lotide",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "lotide: a mini lodash clone - published for educational purposes only.",
   "main": "assertArraysEqual.js",
   "directories": {
