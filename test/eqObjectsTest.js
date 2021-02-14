@@ -29,3 +29,25 @@ describe('#eqObject', ()=>{
   });
 
 });
+
+describe("#eqObjectsRecursive", ()=>{
+  it("should return true when { a: { z: 1 }, b: 2 } and { a: { z: 1 }, b: 2 }", ()=>{
+    assert.equal(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true);
+  })
+
+  it("should return false when { a: { y: 0, z: 1 }, b: 2 } and  { a: { z: 1 }, b: 2 }",()=>{
+    assert.equal(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false);
+  })
+
+  it("should return false when { a: { y: 0, z: 1 }, b: 2 } and { a: 1, b: 2 }", ()=>{
+    assert.equal(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false);
+  })
+
+  it("we need to go deeper... returns false if  { a: { y: 0, z: {i: 1, j: 2} }, b: 2 } and { a: { y: 0, z: {i: 1, j: 0} }, b: 2 }", ()=>{
+    assert.equal(eqObjects({ a: { y: 0, z: {i: 1, j: 2} }, b: 2 }, { a: { y: 0, z: {i: 1, j: 0} }, b: 2 }), false);
+  })
+
+  it("troll in the dungeons! returns true if  { a: { y: 0, z: {i: 1, j: {troll: 'in the dungeon'}} }, b: 2 } and { a: { y: 0, z: {i: 1, j: {troll: 'in the dungeon'}} }, b: 2 }", ()=>{
+    assert.equal(eqObjects({ a: { y: 0, z: {i: 1, j: {troll: 'in the dungeon'}} }, b: 2 },{ a: { y: 0, z: {i: 1, j: {troll: 'in the dungeon'}} }, b: 2 }), true);
+  })
+})
